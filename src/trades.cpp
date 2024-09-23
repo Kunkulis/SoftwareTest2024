@@ -12,7 +12,7 @@ using json = nlohmann::json;
 
 std::string API_URL;
 
-void loadConfig() {
+void loadApiConfig() {
     json config = loadConfig();
     API_URL = config.value("api_url", ""); // Default to empty string if not found
 }
@@ -29,7 +29,7 @@ string fetchTrades() {
     CURLcode res;
     std::string readBuffer;
 
-    loadConfig();
+    loadApiConfig();
 
     curl = curl_easy_init();
     if (curl) {

@@ -3,7 +3,7 @@
 #include <optional>
 #include <functional>
 
-HashTable::HashTable(int tableSize) : table(tableSize), currentSize(0), firstIndex(-1), lastIndex(-1) {}
+HashTable::HashTable(int tableSize) : table(tableSize), tableSize(tableSize), firstIndex(-1), lastIndex(-1) {}
 
 int HashTable::hashFunction(const string &key) {
     std::hash<string> hash_fn;
@@ -41,7 +41,7 @@ void HashTable::remove(const string &key) {
     int originalIndex = index;
 
     while (table[index].isActive && table[index].key != key) {
-        index = (index + 1) % TABLE_SIZE;
+        index = (index + 1) % tableSize;
         if (index == originalIndex) {
             return; // Key not found
         }
@@ -58,7 +58,7 @@ std::optional<int> HashTable::get(const string &key) {
     int originalIndex = index;
 
     while (table[index].isActive && table[index].key != key) {
-        index = (index + 1) % TABLE_SIZE;
+        index = (index + 1) % tableSize;
         if (index == originalIndex) {
             return std::nullopt; // Key not found
         }

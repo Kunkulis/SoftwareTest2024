@@ -7,6 +7,7 @@
 #include "config_loader.hpp"
 
 using namespace std;
+using json = nlohmann::json;
 
 void part1(){
     json config = loadConfig();

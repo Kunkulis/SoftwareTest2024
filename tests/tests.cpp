@@ -4,7 +4,7 @@
 #include "word_utils.hpp"
 
 void testInsertAndGet() {
-    HashTable hashTable;
+    HashTable hashTable(100); // Specify table size
     hashTable.insert("hello", 1);
     hashTable.insert("world", 2);
     assert(hashTable.get("hello").value() == 1);
@@ -13,7 +13,7 @@ void testInsertAndGet() {
 }
 
 void testUpdateValue() {
-    HashTable hashTable;
+    HashTable hashTable(100); // Specify table size
     hashTable.insert("hello", 1);
     hashTable.insert("hello", 3);
     assert(hashTable.get("hello").value() == 3);
@@ -21,7 +21,7 @@ void testUpdateValue() {
 }
 
 void testRemove() {
-    HashTable hashTable;
+    HashTable hashTable(100); // Specify table size
     hashTable.insert("hello", 1);
     hashTable.remove("hello");
     assert(!hashTable.get("hello").has_value());
@@ -29,7 +29,7 @@ void testRemove() {
 }
 
 void testGetFirstAndLast() {
-    HashTable hashTable;
+    HashTable hashTable(100); // Specify table size
     hashTable.insert("first", 1);
     hashTable.insert("second", 2);
     hashTable.insert("third", 3);

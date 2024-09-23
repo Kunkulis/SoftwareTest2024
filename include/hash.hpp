@@ -18,10 +18,10 @@ struct HashNode {
 class HashTable {
 private:
     vector<HashNode> table;
+    int tableSize;
     int currentSize;
     int firstIndex;
     int lastIndex;
-    int tableSize;
 
     int hashFunction(const string &key);
 

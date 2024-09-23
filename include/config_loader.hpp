@@ -1,4 +1,3 @@
-// config_loader.hpp
 #ifndef CONFIG_LOADER_HPP
 #define CONFIG_LOADER_HPP
 
@@ -8,7 +7,7 @@
 
 using json = nlohmann::json;
 
-json loadConfig() {
+inline json loadConfig() {
     std::ifstream configFile("config.json");
     if (configFile.is_open()) {
         json config;
