@@ -19,6 +19,7 @@ add_executable(Main
     src/trades.cpp
     src/hash.cpp
     src/word_utils.cpp
+    include/config_loader.hpp
 )
 
 include_directories(${CURL_INCLUDE_DIRS})
@@ -29,6 +30,13 @@ add_custom_command(
     TARGET Main POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_SOURCE_DIR}/data/Book.txt"
+        $<TARGET_FILE_DIR:Main>
+)
+
+add_custom_command(
+    TARGET Main POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_SOURCE_DIR}/config/config.json"
         $<TARGET_FILE_DIR:Main>
 )
 

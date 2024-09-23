@@ -1,0 +1,4 @@
+{
+    "table_size": 100000,
+    "api_url": "https://fapi.binance.com/fapi/v1/aggTrades?symbol=BTCUSDT&limit=5"
+}

@@ -4,13 +4,14 @@
 #include "hash.hpp"
 #include "word_utils.hpp"
 #include "part1.hpp"
+#include "config_loader.hpp"
 
 using namespace std;
 
 void part1(){
-    HashTable hashTable;
-
-    cout << "Current working directory: " << filesystem::current_path() << endl;
+    json config = loadConfig();
+    int tableSize = config.value("table_size", 100000);
+    HashTable hashTable(tableSize);
 
     ifstream file("Book.txt");
     if (!file.is_open()) {
@@ -18,5 +19,9 @@ void part1(){
         return;
     }
 
-    processWords(file, hashTable);    
+    try {
+        processWords(file, hashTable);
+    } catch (const exception& e) {
+        cerr << "Error processing words: " << e.what() << endl;
+    }    
 }

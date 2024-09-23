@@ -17,16 +17,16 @@ struct HashNode {
 
 class HashTable {
 private:
-    static const int TABLE_SIZE = 100000;
     vector<HashNode> table;
     int currentSize;
     int firstIndex;
     int lastIndex;
+    int tableSize;
 
     int hashFunction(const string &key);
 
 public:
-    HashTable();
+    HashTable(int tableSize);
     void insert(const string &key, int value);
     void remove(const string &key);
     std::optional<int> get(const string &key);
